@@ -3,13 +3,14 @@ import lib
 import torch
 import random
 
+from model import Model
 from utils import check
 from munch import Munch
 from pprint import pprint
 
 config = Munch()
-config.length = 10
-config.batch_size = 10
+config.length = 4
+config.batch_size = 13
 config.device = torch.device("cuda")
 config.lr = 0.001
 config.test_every = 100
@@ -44,6 +45,18 @@ def generate_batch_problem(batch_size, length, sampler):
     return torch.stack(x_batch), torch.stack(x_img_batch), query_batch, torch.stack(y_batch)
 
 
+def train(c, model, train_img_sampler, test_img_sampler, optimiser):
+    """ Runs train loop. """
+    model.train()
+    x, x_img, q, y = generate_batch_problem(c.batch_size, c.length, train_img_sampler)
+    check(x, [c.batch_size, c.length])
+    check(x_img, [c.batch_size, c.length, 28, 28])
+    check(y, [c.batch_size])
+
+    res = model(x, x_img, q)
+
+
+
 def run_exp(c):
     print("Config:")
     pprint(c)
@@ -52,12 +65,16 @@ def run_exp(c):
     train_x, train_y, test_x, test_y = lib.prepare_mnist_data()
     train_img_sampler = lib.get_conditional_sampler(train_x, train_y)
     test_img_sampler = lib.get_conditional_sampler(test_x, test_y)
-    x, x_img, q, y = generate_batch_problem(c.batch_size, c.length, train_img_sampler)
 
-    for i in range(c.batch_size):
-        print(f"x: {x[i]}")
-        print(f"q: {q[i]}")
-        print(f"y: {y[i]}")
+    # setup model
+    model = Model(use_images=False)
+
+    # setup training
+    optimiser = torch.optim.Adam(params=model.parameters(), lr=c.lr)
+    try:
+        train(c, model, train_img_sampler, test_img_sampler, optimiser)
+    except KeyboardInterrupt:
+        print("Interrupt! Halting training. ")
 
 
 def main():

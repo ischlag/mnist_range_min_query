@@ -59,31 +59,6 @@ def get_conditional_sampler(x, y):
     return sampler
 
 
-def generate_batch_model_input(sampler, batch_size, length, device):
-    """ Generates a batch of mnist images and targets ready to be fed into a model. """
-    x_batch, x_img_batch, y_batch = [], [], []
-    for _ in range(batch_size):
-        # x = torch.randint(low=0, high=10, size=(config.length,))
-        x = torch.tensor(np.random.choice(10, length, replace=True))
-        y = torch.sort(x).values
-        """
-        while True:
-            x = torch.tensor(np.random.choice(10, config.length, replace=False))
-            y = torch.sort(x).values
-            if (x != y).any():
-                break
-        """
-
-        x_imgs = torch.stack([sampler(digit) for digit in x], dim=0)
-        check(x_imgs, [length, 28, 28])
-
-        x_batch.append(x)
-        x_img_batch.append(x_imgs)
-        y_batch.append(y.long())
-
-    return torch.stack(x_batch).to(device), torch.stack(x_img_batch).to(device), torch.stack(y_batch).to(device)
-
-
 def next_power_of_2(number):
     """ Returns the next power of 2. """
     if number <= 0:
