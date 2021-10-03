@@ -1,0 +1,89 @@
+Config:
+{'batch_size': 64,
+ 'device': device(type='cuda'),
+ 'length': 6,
+ 'log_every': 200,
+ 'lr': 0.001,
+ 'max_steps': 5000}
+
+### Train with symbol input of length 6
+step=0 loss=2.5429 acc=0.0625
+step=200 loss=0.9556 acc=0.9062
+step=400 loss=0.3407 acc=0.9844
+step=600 loss=0.1250 acc=1.0000
+step=800 loss=0.0612 acc=1.0000
+step=1000 loss=0.0385 acc=1.0000
+step=1200 loss=0.0258 acc=1.0000
+step=1400 loss=0.0181 acc=1.0000
+step=1600 loss=0.0141 acc=1.0000
+step=1800 loss=0.0111 acc=1.0000
+step=2000 loss=0.0083 acc=1.0000
+step=2200 loss=0.0077 acc=1.0000
+step=2400 loss=0.0056 acc=1.0000
+step=2600 loss=0.0051 acc=1.0000
+step=2800 loss=0.0042 acc=1.0000
+step=3000 loss=0.0040 acc=1.0000
+step=3200 loss=0.0029 acc=1.0000
+step=3400 loss=0.0029 acc=1.0000
+step=3600 loss=0.0022 acc=1.0000
+step=3800 loss=0.0022 acc=1.0000
+step=4000 loss=0.0017 acc=1.0000
+step=4200 loss=0.0014 acc=1.0000
+step=4400 loss=0.0014 acc=1.0000
+step=4600 loss=0.0011 acc=1.0000
+step=4800 loss=0.0011 acc=1.0000
+test length 6: loss=0.0010 acc=1.0000
+test length 10: loss=0.0010 acc=1.0000
+test length 15: loss=0.0009 acc=1.0000
+test length 20: loss=0.0008 acc=1.0000
+test length 25: loss=0.0010 acc=1.0000
+test length 30: loss=0.0009 acc=1.0000
+test length 40: loss=0.0009 acc=1.0000
+test length 50: loss=0.0009 acc=1.0000
+test length 60: loss=0.0008 acc=1.0000
+test length 100: loss=0.0009 acc=1.0000
+test length 200: loss=0.0008 acc=1.0000
+test length 300: loss=0.0007 acc=1.0000
+test length 500: loss=0.0007 acc=1.0000
+
+
+
+### Train with MNIST input of length 6
+step=0 loss=2.5546 acc=0.0312
+step=200 loss=0.6032 acc=0.8594
+step=400 loss=0.2528 acc=0.9688
+step=600 loss=0.1277 acc=0.9844
+step=800 loss=0.2743 acc=0.9375
+step=1000 loss=0.3647 acc=0.9375
+step=1200 loss=0.1137 acc=0.9688
+step=1400 loss=0.2081 acc=0.9375
+step=1600 loss=0.4174 acc=0.8750
+step=1800 loss=0.2353 acc=0.9375
+step=2000 loss=0.0589 acc=0.9844
+step=2200 loss=0.0699 acc=0.9844
+step=2400 loss=0.2487 acc=0.9375
+step=2600 loss=0.0479 acc=0.9844
+step=2800 loss=0.2087 acc=0.9219
+step=3000 loss=0.2471 acc=0.9531
+step=3200 loss=0.0999 acc=0.9531
+step=3400 loss=0.0575 acc=0.9844
+step=3600 loss=0.0206 acc=1.0000
+step=3800 loss=0.2212 acc=0.9531
+step=4000 loss=0.1316 acc=0.9688
+step=4200 loss=0.0627 acc=0.9844
+step=4400 loss=0.1269 acc=0.9688
+step=4600 loss=0.0367 acc=0.9844
+step=4800 loss=0.0653 acc=0.9688
+test length 6: loss=0.1893 acc=0.9219
+test length 10: loss=0.0861 acc=0.9688
+test length 15: loss=0.0386 acc=0.9844
+test length 20: loss=0.1242 acc=0.9844
+test length 25: loss=0.1813 acc=0.9688
+test length 30: loss=0.1706 acc=0.9688
+test length 40: loss=0.0278 acc=0.9844
+test length 50: loss=0.2289 acc=0.9531
+test length 60: loss=0.0140 acc=1.0000
+test length 100: loss=0.0412 acc=0.9844
+test length 200: loss=0.0530 acc=0.9844
+test length 300: loss=0.0102 acc=1.0000
+test length 500: loss=0.0049 acc=1.0000
