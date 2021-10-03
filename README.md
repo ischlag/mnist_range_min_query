@@ -1,1 +1,2 @@
-# minist_range_min_query
+# Range Minimum Query with Segment Trees and MNIST input images
+
